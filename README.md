@@ -17,4 +17,5 @@ example of valid inputs and expected outputs:**15,true,true,false,true,false**
 
 password is =   yY@\AwQ%/\d(?Mj
 ---
-**valid email length is between 5 and 15 and has lower,upper,digit or '_' chars**
+---
+## valid email length is between 5 and 15 and has lower,upper,digit or '_' chars
