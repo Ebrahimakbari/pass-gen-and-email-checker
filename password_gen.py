@@ -1,6 +1,7 @@
 import random
 import string
-
+import mysql.connector
+lis_of_pass = []
 while True:
     def get_setting():
         user_setting = input(
@@ -69,5 +70,25 @@ while True:
         final_pass = create_random_place(get_sett)
         print(f'password is =   {''.join(final_pass)}')
         print(f'password is =   {final_pass}')
+        lis_of_pass.append((''.join(final_pass),))
+        return lis_of_pass
 
-    run_me()
+    passwd = run_me()
+# passwd = [('Xy6vT82Hkr1qW24',), ('A3egL3ZYXiR76d0',), ('6RjSWeMhaDU0j7a',), ('bS0g71bI3UvQerk',), ('1Cn61B04NVYqrVd',), ('2KlBl9yuD95Li2F',)]
+mydb = mysql.connector.connect(user='ebrahimak',password='admin@1990',host='localhost')
+cursor=mydb.cursor()
+cursor.execute('create database if not exists passwords')
+cursor.execute('use passwords')
+cursor.execute('create table if not exists pass('
+               'id int auto_increment primary key,'
+               'password varchar(100))')
+# for item in passwd:
+#     cursor.execute('insert into pass (password) values (%s)',list(item))
+    
+cursor.executemany('insert into pass (password) values (%s)',passwd)
+mydb.commit()
+cursor.execute('select * from pass')
+passwords = cursor.fetchall()
+print(passwords)
+
+
