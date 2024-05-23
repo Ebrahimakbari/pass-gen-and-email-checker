@@ -77,7 +77,7 @@ while True:
     passwd = run_me()
 # passwd = [('Xy6vT82Hkr1qW24',), ('A3egL3ZYXiR76d0',), ('6RjSWeMhaDU0j7a',), ('bS0g71bI3UvQerk',), ('1Cn61B04NVYqrVd',), ('2KlBl9yuD95Li2F',)]
 mydb = mysql.connector.connect(
-    user='ebrahimak', password='admin@1990', host='localhost')
+    user='@@', password='@@', host='@@')
 cursor = mydb.cursor()
 cursor.execute('create database if not exists passwords')
 cursor.execute('use passwords')
